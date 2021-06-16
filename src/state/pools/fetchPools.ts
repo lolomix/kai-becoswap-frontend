@@ -1,9 +1,8 @@
 import poolsConfig from 'config/constants/pools'
 import sousChefABI from 'config/abi/sousChef.json'
 import cakeABI from 'config/abi/cake.json'
-import wbnbABI from 'config/abi/weth.json'
 import multicall from 'utils/multicall'
-import { getAddress, getMasterChefAddress, getWbnbAddress } from 'utils/addressHelpers'
+import { getAddress, getMasterChefAddress} from 'utils/addressHelpers'
 import BigNumber from 'bignumber.js'
 import masterchefABI from 'config/abi/masterchef.json'
 
@@ -60,36 +59,18 @@ export const fetchPools = async () => {
 }
 
 export const fetchPoolsTotalStaking = async () => {
-  const nonBnbPools = poolsConfig.filter((p) => p.stakingToken.symbol !== 'BNB')
-  const bnbPool = poolsConfig.filter((p) => p.stakingToken.symbol === 'BNB')
-
-  const callsNonBnbPools = nonBnbPools.map((poolConfig) => {
+  const callsPools = poolsConfig.map((poolConfig) => {
     return {
       address: getAddress(poolConfig.stakingToken.address),
       name: 'balanceOf',
       params: [getAddress(poolConfig.contractAddress)],
     }
   })
-
-  const callsBnbPools = bnbPool.map((poolConfig) => {
-    return {
-      address: getWbnbAddress(),
-      name: 'balanceOf',
-      params: [getAddress(poolConfig.contractAddress)],
-    }
-  })
-
-  const nonBnbPoolsTotalStaked = await multicall(cakeABI, callsNonBnbPools)
-  const bnbPoolsTotalStaked = await multicall(wbnbABI, callsBnbPools)
-
+  const totalStaked = await multicall(cakeABI, callsPools)
   return [
-    ...nonBnbPools.map((p, index) => ({
+    ...totalStaked.map((p, index) => ({
       sousId: p.sousId,
-      totalStaked: new BigNumber(nonBnbPoolsTotalStaked[index]).toJSON(),
-    })),
-    ...bnbPool.map((p, index) => ({
-      sousId: p.sousId,
-      totalStaked: new BigNumber(bnbPoolsTotalStaked[index]).toJSON(),
+      totalStaked: new BigNumber(totalStaked[index]).toJSON(),
     })),
   ]
 }

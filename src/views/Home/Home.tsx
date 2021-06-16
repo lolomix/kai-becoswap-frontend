@@ -9,7 +9,7 @@ import CakeStats from 'views/Home/components/CakeStats'
 import TotalValueLockedCard from 'views/Home/components/TotalValueLockedCard'
 
 const Hero = styled.div`
-  background-image: url('/images/pan-bg.png');
+  background-image: url('/images/pan-bg.jpg');
   -webkit-box-align: center;
   align-items: center;
   background-position: center center, center center;
@@ -23,6 +23,8 @@ const Hero = styled.div`
   margin: auto auto 25px;
   padding: 32px 16px;
   text-align: center;
+  height: 300px;
+  color: #fff
 `
 
 const Cards = styled(BaseLayout)`
@@ -54,10 +56,10 @@ const Home: React.FC = () => {
   return (
     <div>
       <Hero>
-        <Heading as="h1" size="xl" mb="24px" color="secondary">
+        <Heading as="h1" size="xl" mb="24px" color="secondary" style={{"color": "#fff"}}>
           {t('BecoSwap')}
         </Heading>
-        <Text>{t('Trade, Yield Farm & AMM on Binance Smart Chain.')}</Text>
+        <Text style={{"color": "#fff"}}>{t('Trade, Yield Farm & AMM on Kardiachain.')}</Text>
       </Hero>
       <Page>
         <div>

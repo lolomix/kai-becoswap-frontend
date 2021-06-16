@@ -26,7 +26,7 @@ const farms: FarmConfig[] = [
 
   {
     pid: 2,
-    lpSymbol: 'KAI-USD LP',
+    lpSymbol: 'KAI-KUSD LP',
     lpAddresses: {
       97: '0x7cd3c7aFeDD16A72Fba66eA35B2e2b301d1B7093',
       0: '0x7cd3c7aFeDD16A72Fba66eA35B2e2b301d1B7093',

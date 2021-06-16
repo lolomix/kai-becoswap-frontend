@@ -34,7 +34,6 @@ const Pools: React.FC = () => {
     () => finishedPools.some((pool) => pool.userData && new BigNumber(pool.userData.stakedBalance).isGreaterThan(0)),
     [finishedPools],
   )
-
   return (
     <>
       <PageHeader>

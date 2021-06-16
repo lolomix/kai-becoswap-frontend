@@ -1,5 +1,5 @@
 import React from 'react'
-import { TRANSFER_TAX } from 'config'
+import { BECO_PER_BLOCK, TRANSFER_TAX } from 'config'
 
 import { Card, CardBody, Heading, Text } from '@becoswap-libs/kai-uikit'
 import styled from 'styled-components'
@@ -43,7 +43,7 @@ const CakeStats = () => {
         </Row>
         <Row>
           <Text fontSize="14px">{t('New BECO/block')}</Text>
-          <CardValue fontSize="14px" decimals={0} value={70} />
+          <CardValue fontSize="14px" decimals={0} value={BECO_PER_BLOCK.toNumber()} />
         </Row>
         <Row>
           <Text fontSize="14px">{t('Transfer BECO Fee')}</Text>

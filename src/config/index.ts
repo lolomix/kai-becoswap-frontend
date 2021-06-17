@@ -6,7 +6,7 @@ BigNumber.config({
   DECIMAL_PLACES: 80,
 })
 
-export const BSC_BLOCK_TIME = 3
+export const BSC_BLOCK_TIME = 5
 
 // BECO_PER_BLOCK details
 // 70 BECO is minted per block

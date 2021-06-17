@@ -39,25 +39,31 @@ const config: MenuEntry[] = [
   {
     label: 'NFT Marketplace',
     icon: 'NftIcon',
-    href: 'https://docs.becoswap.com/products/nft-marketplace',
-  },
-
-  {
-    label: 'Becochain',
-    icon: 'ChainIcon',
-    href: 'https://becochain.io',
+    href: "#",
+    status: {
+      text: "Coming",
+      color: "primary"
+    }
   },
 
   {
     label: 'Supply Chain',
     icon: 'SupplyChainIcon',
-    href: 'https://docs.becoswap.com/products/supplychain',
+    href: "#",
+    status: {
+      text: "Coming",
+      color: "primary"
+    }
   },
 
   {
     label: 'Games',
     icon: 'NftIcon',
-    href: 'https://docs.becoswap.com/products/games',
+    href: "#",
+    status: {
+      text: "Coming",
+      color: "primary"
+    }
   },
   {
     label: 'More',

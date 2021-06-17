@@ -3,7 +3,6 @@ import styled, { keyframes, css } from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import { LinkExternal, Text } from '@becoswap-libs/kai-uikit'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
-import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { CommunityTag, CoreTag, DualTag } from 'components/Tags'
 
 import HarvestAction from './HarvestAction'
@@ -140,12 +139,12 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
 
   const { t } = useTranslation()
   const isActive = farm.multiplier !== '0X'
-  const { quoteToken, token, dual } = farm
+  const { dual } = farm
   const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('PANCAKE', '')
-  const liquidityUrlPathParts = getLiquidityUrlPathParts({
-    quoteTokenAddress: quoteToken.address,
-    tokenAddress: token.address,
-  })
+  // const liquidityUrlPathParts = getLiquidityUrlPathParts({
+  //   quoteTokenAddress: quoteToken.address,
+  //   tokenAddress: token.address,
+  // })
   const lpAddress = farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]
   const bsc = `https://explorer.kardiachain.io/address/${lpAddress}`
   const info = `https://kaidex.io/exchange/${lpAddress}`
@@ -155,7 +154,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
       <InfoContainer>
         {isActive && (
           <StakeContainer>
-            <StyledLinkExternal href={`https://kaidex.io/exchange/#/add/${liquidityUrlPathParts}`}>
+            <StyledLinkExternal href={`https://kaidex.io/portfolio/add/${lpAddress}`}>
               {t(`Get ${lpLabel}`, { name: lpLabel })}
             </StyledLinkExternal>
           </StakeContainer>

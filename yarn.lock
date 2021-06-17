@@ -1222,8 +1222,10 @@
     "@web3-react/types" "^6.0.7"
     tiny-warning "^1.0.3"
 
-"@becoswap-libs/kai-uikit@file:../becoswap-toolkit/packages/beco-uikit":
-  version "1.0.0"
+"@becoswap-libs/kai-uikit@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@becoswap-libs/kai-uikit/-/kai-uikit-1.0.1.tgz#62134ef78515171dd8e00f16a64ac549e1d0dd9e"
+  integrity sha512-zitVEzIjf1UYXAtEKmOOb3iB3dr9s6mniyv/jMmUwVi4JrSLWZgoOyY+nPQ4rI65wP+FfjsFf5iqvGPF3uUhMw==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/lodash" "^4.14.168"

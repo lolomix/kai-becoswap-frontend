@@ -32,16 +32,23 @@ const TotalValueLockedCard = () => {
 
       tvl += getBalanceAmount(new BigNumber(locked)).toNumber()
     }
+
   }) 
 
   farms.data.forEach(farm => {
     if (!farm.lpTotalInQuoteToken || !prices) {
       return 
     }
+
     const quoteTokenPriceUsd = prices[getAddress(farm.quoteToken.address).toLowerCase()]
-    const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(quoteTokenPriceUsd)
-    tvl += totalLiquidity.toNumber()
+    if (quoteTokenPriceUsd) {
+      const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(quoteTokenPriceUsd)
+      if (totalLiquidity.toNumber() ) {
+        tvl += totalLiquidity.toNumber()
+      }
+    }
   }) 
+
   const tvlFormatted = tvl
     ? `$${tvl.toLocaleString(undefined, { maximumFractionDigits: 3 })}`
     : '-'

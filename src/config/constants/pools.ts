@@ -3,12 +3,12 @@ import { PoolConfig, PoolCategory } from './types'
 
 const pools: PoolConfig[] = [
   {
-    sousId: 4,
+    sousId: 0,
     stakingToken: tokens.beco,
     earningToken: tokens.beco,
     contractAddress: {
-      97: '0x1d32c2945C8FDCBc7156c553B7cEa4325a17f4f9',
-      0: '0xbA3bEE111EDEA3B09d1e4A3353E2c8Ac072f310c',
+      97: '0x20e8Ff1e1d9BC429489dA76B1Fc20A9BFbF3ee7e',
+      0: '0x20e8Ff1e1d9BC429489dA76B1Fc20A9BFbF3ee7e',
     },
     poolCategory: PoolCategory.CORE,
     harvest: true,
@@ -18,31 +18,31 @@ const pools: PoolConfig[] = [
   },
 
   {
-    sousId: 6,
+    sousId: 1,
     stakingToken: tokens.wkai,
     earningToken: tokens.beco,
     contractAddress: {
-      97: '0x1d32c2945C8FDCBc7156c553B7cEa4325a17f4f9',
-      0: '0xbA3bEE111EDEA3B09d1e4A3353E2c8Ac072f310c',
+      97: '0x20e8Ff1e1d9BC429489dA76B1Fc20A9BFbF3ee7e',
+      0: '0x20e8Ff1e1d9BC429489dA76B1Fc20A9BFbF3ee7e',
     },
     poolCategory: PoolCategory.CORE,
     harvest: true,
-    tokenPerBlock: '4',
+    tokenPerBlock: '1',
     sortOrder: 1,
     isFinished: false,
   },
 
   {
-    sousId: 5,
+    sousId: 2,
     stakingToken: tokens.dpet,
     earningToken: tokens.beco,
     contractAddress: {
-      97: '0x1d32c2945C8FDCBc7156c553B7cEa4325a17f4f9',
-      0: '0xbA3bEE111EDEA3B09d1e4A3353E2c8Ac072f310c',
+      97: '0x20e8Ff1e1d9BC429489dA76B1Fc20A9BFbF3ee7e',
+      0: '0x20e8Ff1e1d9BC429489dA76B1Fc20A9BFbF3ee7e',
     },
     poolCategory: PoolCategory.CORE,
     harvest: true,
-    tokenPerBlock: '4',
+    tokenPerBlock: '1',
     sortOrder: 1,
     isFinished: false,
   },

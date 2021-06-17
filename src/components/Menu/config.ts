@@ -9,7 +9,7 @@ const config: MenuEntry[] = [
   {
     label: 'Trade',
     icon: 'TradeIcon',
-    href: 'https://kaidex.io/exchange',
+    href: 'https://kaidex.io/exchange/0x1eBbF8080149FF07381AFd148bA0AF007f78cD3c',
   },
   {
     label: 'Farms',

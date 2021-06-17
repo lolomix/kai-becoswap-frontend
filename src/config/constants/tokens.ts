@@ -6,8 +6,8 @@ const tokens = {
   beco: {
     symbol: 'BECO',
     address: {
-      0: '0x4E6c62cA8D2F24f871B1225741fF5c357e550E5b',
-      97: '0x4E6c62cA8D2F24f871B1225741fF5c357e550E5b',
+      0: '0x2Eddba8b949048861d2272068A94792275A51658',
+      97: '0x2Eddba8b949048861d2272068A94792275A51658',
     },
     decimals: 18,
     projectLink: 'https://becoswap.com/',

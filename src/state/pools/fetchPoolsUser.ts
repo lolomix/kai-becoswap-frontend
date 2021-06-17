@@ -1,9 +1,8 @@
-import { AbiItem } from 'web3-utils'
 import poolsConfig from 'config/constants/pools'
 import masterChefABI from 'config/abi/masterchef.json'
 import erc20ABI from 'config/abi/erc20.json'
 import multicall from 'utils/multicall'
-import { getAddress, getMasterChefAddress } from 'utils/addressHelpers'
+import { getAddress} from 'utils/addressHelpers'
 import { getWeb3NoAccount } from 'utils/web3'
 import BigNumber from 'bignumber.js'
 
@@ -12,7 +11,6 @@ import BigNumber from 'bignumber.js'
 const nonBnbPools = poolsConfig.filter((p) => p.stakingToken.symbol !== 'BNB')
 const bnbPools = poolsConfig.filter((p) => p.stakingToken.symbol === 'BNB')
 const web3 = getWeb3NoAccount()
-const masterChefContract = new web3.eth.Contract(masterChefABI as unknown as AbiItem, getMasterChefAddress())
 
 export const fetchPoolsAllowance = async (account) => {
   const calls = nonBnbPools.map((p) => ({
@@ -52,49 +50,59 @@ export const fetchUserBalances = async (account) => {
 }
 
 export const fetchUserStakeBalances = async (account) => {
-  // const calls = nonMasterPools.map((p) => ({
-  //   address: getAddress(p.contractAddress),
-  //   name: 'userInfo',
-  //   params: [account],
-  // }))
-  // const userInfo = await multicall(sousChefABI, calls)
-  // const stakedBalances = nonMasterPools.reduce(
-  //   (acc, pool, index) => ({
-  //     ...acc,
-  //     [pool.sousId]: new BigNumber(userInfo[index].amount._hex).toJSON(),
-  //   }),
-  //   {},
-  // )
+  const calls = poolsConfig.map((p) => ({
+    address: getAddress(p.contractAddress),
+    name: 'userInfo',
+    params: [p.sousId, account],
+  }))
+  const userInfo = await multicall(masterChefABI, calls)
+  const stakedBalances = poolsConfig.reduce(
+    (acc, pool, index) => ({
+      ...acc,
+      [pool.sousId]: new BigNumber(userInfo[index].amount._hex).toJSON(),
+    }),
+    {},
+  )
 
-  // Beco / Beco pool
-  const { amount: masterPoolAmount } = await masterChefContract.methods.userInfo('0', account).call()
-
-  return { 0: new BigNumber(masterPoolAmount).toJSON() }
+  return { ...stakedBalances }
 }
 
 export const fetchUserCanHarvests = async (account) => {
-  const canHarvest = await masterChefContract.methods.canHarvest('0', account).call()
-  return { 0: canHarvest }
+  const calls = poolsConfig.map((p) => ({
+    address: getAddress(p.contractAddress),
+    name: 'canHarvest',
+    params: [p.sousId, account],
+  }))
+
+  const res = await multicall(masterChefABI, calls)
+
+  const canHarvests = poolsConfig.reduce(
+    (acc, pool, index) => ({
+      ...acc,
+      [pool.sousId]: res[index],
+    }),
+    {},
+  )
+
+  return canHarvests
 }
 
 export const fetchUserPendingRewards = async (account) => {
-  // const calls = nonMasterPools.map((p) => ({
-  //   address: getAddress(p.contractAddress),
-  //   name: 'pendingReward',
-  //   params: [account],
-  // }))
-  // const res = await multicall(sousChefABI, calls)
-  // const pendingRewards = nonMasterPools.reduce(
-  //   (acc, pool, index) => ({
-  //     ...acc,
-  //     [pool.sousId]: new BigNumber(res[index]).toJSON(),
-  //   }),
-  //   {},
-  // )
+  const calls = poolsConfig.map((p) => ({
+    address: getAddress(p.contractAddress),
+    name: 'pendingBeco',
+    params: [p.sousId, account],
+  }))
+  const res = await multicall(masterChefABI, calls)
+  
 
-  // Beco / Beco pool
-  const pendingReward = await masterChefContract.methods.pendingBeco('0', account).call()
-  // const pendingRewardAfterTax = pendingReward - pendingReward/TRANSFER_TAX;
+  const pendingRewards = poolsConfig.reduce(
+    (acc, pool, index) => ({
+      ...acc,
+      [pool.sousId]: new BigNumber(res[index]).toJSON(),
+    }),
+    {},
+  )
 
-  return { 0: new BigNumber(pendingReward).toJSON() }
+  return pendingRewards
 }

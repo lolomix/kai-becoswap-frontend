@@ -68,7 +68,7 @@ export const fetchPoolsTotalStaking = async () => {
   })
   const totalStaked = await multicall(cakeABI, callsPools)
   return [
-    ...totalStaked.map((p, index) => ({
+    ...poolsConfig.map((p, index) => ({
       sousId: p.sousId,
       totalStaked: new BigNumber(totalStaked[index]).toJSON(),
     })),

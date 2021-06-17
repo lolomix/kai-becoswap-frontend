@@ -6,6 +6,7 @@ import { useFarms, useGetApiPrices, usePools } from 'state/hooks'
 import { useWeb3React } from '@web3-react/core'
 import { getAddress } from 'utils/addressHelpers'
 import BigNumber from 'bignumber.js'
+import { getBalanceAmount } from 'utils/formatBalance'
 
 const StyledTotalValueLockedCard = styled(Card)`
   align-items: center;
@@ -25,7 +26,12 @@ const TotalValueLockedCard = () => {
     if (!pool.totalStaked || !prices) {
       return 
     }
-    tvl += pool.totalStaked.toNumber() * prices[getAddress(pool.stakingToken.address)]
+    const stakingTokenPrice = prices[getAddress(pool.stakingToken.address).toLowerCase()];
+    if (stakingTokenPrice) {
+      const locked = new BigNumber(pool.totalStaked).toNumber() * stakingTokenPrice
+
+      tvl += getBalanceAmount(new BigNumber(locked)).toNumber()
+    }
   }) 
 
   farms.data.forEach(farm => {
@@ -36,7 +42,6 @@ const TotalValueLockedCard = () => {
     const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(quoteTokenPriceUsd)
     tvl += totalLiquidity.toNumber()
   }) 
-
   const tvlFormatted = tvl
     ? `$${tvl.toLocaleString(undefined, { maximumFractionDigits: 3 })}`
     : '-'

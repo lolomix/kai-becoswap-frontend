@@ -193,7 +193,6 @@ export const useGetApiPrices = () => {
 
 export const useGetApiPrice = (address: string) => {
   const prices = useGetApiPrices()
-
   if (!prices) {
     return null
   }

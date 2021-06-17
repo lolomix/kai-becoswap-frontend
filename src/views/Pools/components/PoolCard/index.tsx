@@ -4,8 +4,9 @@ import { CardBody, Flex, Text, CardRibbon } from '@becoswap-libs/kai-uikit'
 import UnlockButton from 'components/UnlockButton'
 import { useTranslation } from 'contexts/Localization'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { usePriceCakeBusd } from 'state/hooks'
+import { useGetApiPrice } from 'state/hooks'
 import { Pool } from 'state/types'
+import { getAddress } from 'utils/addressHelpers'
 import AprRow from './AprRow'
 import StyledCard from './StyledCard'
 import CardFooter from './CardFooter'
@@ -17,7 +18,7 @@ const PoolCard: React.FC<{ pool: Pool; account: string }> = ({ pool, account }) 
   const { t } = useTranslation()
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
   const accountHasStakedBalance = stakedBalance.gt(0)
-  const stakingTokenPrice = usePriceCakeBusd().toNumber()
+  const stakingTokenPrice = useGetApiPrice(getAddress(pool.stakingToken.address))
   const depositFee = pool.depositFeeBP || 0
   return (
     <StyledCard

@@ -28,6 +28,7 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
   const { t } = useTranslation()
   const earningTokenPrice = useGetApiPrice(earningToken.address ? getAddress(earningToken.address) : '')
   const fullBalance = getFullDisplayBalance(earnings, earningToken.decimals)
+
   const formattedBalance = formatNumber(getBalanceNumber(earnings, earningToken.decimals), 3, 3)
   const earningsDollarValue = formatNumber(
     getBalanceNumber(earnings.multipliedBy(earningTokenPrice), earningToken.decimals),

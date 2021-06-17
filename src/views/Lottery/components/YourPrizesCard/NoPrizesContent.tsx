@@ -27,6 +27,7 @@ const Image = styled.img`
 `
 const StyledButton = styled(Button)`
   padding: 0 12px;
+  color: #bfbfbf;
   height: unset;
 `
 
@@ -39,8 +40,8 @@ const NoPrizesContent: React.FC = () => {
     <Wrapper>
       <Image src="/images/no-prize.svg" alt="no prizes won" />
       <TextWrapper>
-        <StyledText color="textDisabled">{t('Sorry, no prizes to collect')}</StyledText>
-        <StyledButton variant="text" onClick={onPresentMyTickets}>
+        <StyledText color="white">{t('Sorry, no prizes to collect')}</StyledText>
+        <StyledButton color="white" variant="text" onClick={onPresentMyTickets}>
           {t('View your tickets')}
         </StyledButton>
       </TextWrapper>

@@ -137,21 +137,21 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
           </LinkExternal>
         </Flex>
       )}
-      {account && isMetaMaskInScope && tokenAddress && (
-        <Flex justifyContent="flex-end">
-          <Button
-            variant="text"
-            p="0"
-            height="auto"
-            onClick={() => registerToken(tokenAddress, earningToken.symbol, earningToken.decimals, imageSrc)}
-          >
-            <Text color="primary" fontSize="14px">
-              Add to Metamask
-            </Text>
-            <MetamaskIcon ml="4px" />
-          </Button>
-        </Flex>
-      )}
+      {/* {account && isMetaMaskInScope && tokenAddress && ( */}
+      {/*  <Flex justifyContent="flex-end"> */}
+      {/*    <Button */}
+      {/*      variant="text" */}
+      {/*      p="0" */}
+      {/*      height="auto" */}
+      {/*      onClick={() => registerToken(tokenAddress, earningToken.symbol, earningToken.decimals, imageSrc)} */}
+      {/*    > */}
+      {/*      <Text color="primary" fontSize="14px"> */}
+      {/*        Add to Metamask */}
+      {/*      </Text> */}
+      {/*      <MetamaskIcon ml="4px" /> */}
+      {/*    </Button> */}
+      {/*  </Flex> */}
+      {/* )} */}
     </ExpandedWrapper>
   )
 }

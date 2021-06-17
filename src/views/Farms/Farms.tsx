@@ -30,6 +30,25 @@ import { RowProps } from './components/FarmTable/Row'
 import ToggleView from './components/ToggleView/ToggleView'
 import { DesktopColumnSchema, ViewMode } from './components/types'
 
+const Hero = styled.div`
+  //background-image: url('/images/pan-bg.jpg');
+  -webkit-box-align: center;
+  align-items: center;
+  background-position: center center, center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: rgb(146 146 146 / 35%) 0px 0px 0px 3000px inset;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto auto 25px;
+  padding: 32px 16px;
+  text-align: center;
+  height: 300px;
+  color: #fff
+`
+
 const ControlContainer = styled.div`
   display: flex;
   width: 100%;
@@ -361,14 +380,14 @@ const Farms: React.FC = () => {
 
   return (
     <>
-      <PageHeader>
-        <Heading as="h1" size="xxl" color="secondary" mb="24px">
+      <Hero>
+        <Heading as="h1" size="xxl" mb="24px" color="white">
           {t('Farms')}
         </Heading>
-        <Heading size="lg" color="text">
+        <Heading size="lg" color="white">
           {t('Stake Liquidity Pool (LP) tokens to earn.')}
         </Heading>
-      </PageHeader>
+      </Hero>
       <Page>
         <ControlContainer>
           <ViewControls>

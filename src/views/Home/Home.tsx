@@ -9,7 +9,7 @@ import CakeStats from 'views/Home/components/CakeStats'
 import TotalValueLockedCard from 'views/Home/components/TotalValueLockedCard'
 
 const Hero = styled.div`
-  background-image: url('/images/pan-bg.jpg');
+  //background-image: url('/images/pan-bg.jpg');
   -webkit-box-align: center;
   align-items: center;
   background-position: center center, center center;
@@ -56,7 +56,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <Hero>
-        <Heading as="h1" size="xl" mb="24px" color="secondary" style={{"color": "#fff"}}>
+        <Heading as="h1" size="xxl" mb="24px" color="secondary" style={{"color": "#fff"}}>
           {t('BecoSwap')}
         </Heading>
         <Text style={{"color": "#fff"}}>{t('Trade, Yield Farm & AMM on Kardiachain.')}</Text>

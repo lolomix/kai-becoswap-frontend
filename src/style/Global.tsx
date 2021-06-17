@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Kanit', sans-serif;
   }
   body {
+    background-image: url('/images/banner_1920x1080.jpg');
     background-color: ${({ theme }) => theme.colors.background};
 
     img {

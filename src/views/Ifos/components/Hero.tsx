@@ -13,9 +13,11 @@ const getGradient = (isDark: boolean) => {
 }
 
 const StyledHero = styled.div`
-  background: ${({ theme }) => getGradient(theme.isDark)};
+  //background: ${({ theme }) => getGradient(theme.isDark)};
+  box-shadow: rgb(146 146 146 / 35%) 0px 0px 0px 3000px inset;
   padding-bottom: 40px;
   padding-top: 40px;
+  text-shadow: 2px 2px 2px #00000040;
 `
 
 const CurtainBottom = styled.div``
@@ -27,10 +29,10 @@ const Hero = () => {
     <Box mb="32px">
       <StyledHero>
         <Container>
-          <Heading as="h1" size="xl" mb="24px">
+          <Heading as="h1" size="xl" mb="24px" color="white">
             {t('Launchpad')}
           </Heading>
-          <Text bold fontSize="20px">
+          <Text bold fontSize="20px" color="white">
             {t('Buy new tokens with BECO-LP.')}
           </Text>
         </Container>

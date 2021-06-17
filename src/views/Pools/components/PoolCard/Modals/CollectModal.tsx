@@ -35,15 +35,14 @@ const CollectModal: React.FC<CollectModalProps> = ({
   earningToken,
   earningsDollarValue,
   sousId,
-  isBnbPool,
   isCompoundPool = false,
   onDismiss,
 }) => {
   const { t } = useTranslation()
   const { theme } = useTheme()
   const { toastSuccess, toastError } = useToast()
-  const { onReward } = useSousHarvest(sousId, isBnbPool)
-  const { onStake } = useSousStake(sousId, isBnbPool)
+  const { onReward } = useSousHarvest(sousId)
+  const { onStake } = useSousStake(sousId)
   const [pendingTx, setPendingTx] = useState(false)
   const [shouldCompound, setShouldCompound] = useState(isCompoundPool)
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
